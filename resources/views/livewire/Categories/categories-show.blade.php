@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categories')}}
+            {{ $category->name }}
         </h2>
     </x-slot>
 
@@ -15,15 +15,18 @@
 
                         <table class="w-full">
                             <thead>
-                                <th class="p-2 text-left">Categories</th>
+                                <th class="p-2 text-left">User</th>
+                                <th class="p-2 text-left">Title</th>
+                                <th class="p-2 text-left">Excerpt</th>
+                                <th class="p-2 text-left">Post</th>
                             </thead>
 
-                            @foreach ($categories as $category)
+                            @foreach ($posts as $post)
                             <tr class="my-2">
-                                <td class="p-2 text-left">{{ $category->name }}</td>
-                                <td class="p-2 text-left">
-                                    <a href=" {{ route('categories.show', ['category' => $category]) }}">View Posts</a>
-                                </td>
+                                <td class="p-2 text-left">{{ $post->user->name }}</td>
+                                <td class="p-2 text-left">{{ $post->title }}</td>
+                                <td class="p-2 text-left">{{ $post->excerpt }}</td>
+                                <td class="p-2 text-left">{{ $post->body }}</td>
                             </tr>
                             @endforeach
                         </table>
@@ -34,4 +37,3 @@
     </div>
 
 </x-app-layout>
-

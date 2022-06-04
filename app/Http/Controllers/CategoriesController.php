@@ -18,7 +18,7 @@ class CategoriesController extends Controller
             // ->select('Name')
             ->get();
         
-        return view('livewire.categories.categories-index', ['categories' => $categories]);
+        return view('livewire.Categories.categories-index', ['categories' => $categories]);
     }
 
     /**
@@ -48,9 +48,13 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
-        //
+        $posts = \App\Models\Post::query()
+        ->where('category_id', '=', $category->id)
+        ->get();
+
+        return view('livewire.Categories.categories-show', ['category' => $category, 'posts' => $posts]);
     }
 
     /**
