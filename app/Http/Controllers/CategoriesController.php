@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Home;
-use App\Models\Post;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::query()
-            ->select('id', 'user_id', 'category', 'title', 'excerpt', 'body', 'published', 'featured_image')
-            ->with('user:id,name')
+        $categories = Categories::query()
+            // ->select('Name')
             ->get();
-
-        return view('livewire.home.home-index', ['posts' => $posts]);
+        
+        return view('livewire.categories.categories-index', ['categories' => $categories]);
     }
 
     /**
@@ -47,10 +45,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show(Categories $categories)
     {
         //
     }
@@ -58,10 +56,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit(Categories $categories)
     {
         //
     }
@@ -70,10 +68,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, Categories $categories)
     {
         //
     }
@@ -81,10 +79,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
+    public function destroy(Categories $categories)
     {
         //
     }

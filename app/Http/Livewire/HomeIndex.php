@@ -26,7 +26,7 @@ class HomeIndex extends Component
 
     public function render()
     {
-        return view('livewire.home-index', [ 
+        return view('livewire.home.home-index', [ 
             'posts' => $this->posts,
             'users' => User::get()
         ]);
