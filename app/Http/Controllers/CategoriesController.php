@@ -15,7 +15,6 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Categories::query()
-            // ->select('Name')
             ->get();
         
         return view('livewire.Categories.categories-index', ['categories' => $categories]);

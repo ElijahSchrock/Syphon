@@ -12,21 +12,21 @@
         <x-slot name="form">
             <!-- Token Name -->
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="name" value="{{ __('Token Name') }}" />
-                <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="createApiTokenForm.name" autofocus />
+                <x-jet-label for="name" value="{{ __('Token Name') }}" class="text-white"/>
+                <x-jet-input id="name" type="text" class="mt-1 block w-full bg-gray-800 text-white" wire:model.defer="createApiTokenForm.name" autofocus />
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
 
             <!-- Token Permissions -->
             @if (Laravel\Jetstream\Jetstream::hasPermissions())
                 <div class="col-span-6">
-                    <x-jet-label for="permissions" value="{{ __('Permissions') }}" />
+                    <x-jet-label for="permissions" value="{{ __('Permissions') }}" class="text-white"/>
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
-                            <label class="flex items-center">
-                                <x-jet-checkbox wire:model.defer="createApiTokenForm.permissions" :value="$permission"/>
-                                <span class="ml-2 text-sm text-gray-600">{{ $permission }}</span>
+                            <label class="flex items-center text-white">
+                                <x-jet-checkbox wire:model.defer="createApiTokenForm.permissions" :value="$permission" class="bg-gray-800"/>
+                                <span class="ml-2 text-sm text-white">{{ $permission }}</span>
                             </label>
                         @endforeach
                     </div>

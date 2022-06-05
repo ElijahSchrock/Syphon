@@ -13,4 +13,5 @@ class Categories extends Model
     {
         return $this->belongsToMany(\App\Models\Post::class, 'post_id');
     }
+
 }

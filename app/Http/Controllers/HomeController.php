@@ -16,8 +16,8 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::query()
-            ->select('id', 'user_id', 'category', 'title', 'excerpt', 'body', 'published', 'featured_image')
-            ->with('user:id,name')
+            ->select('id', 'user_id', 'category', 'title', 'body', 'featured_image')
+            ->with('user:id,name,profile_photo_path')
             ->get();
 
         return view('livewire.home.home-index', ['posts' => $posts]);

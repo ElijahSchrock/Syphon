@@ -15,6 +15,7 @@ module.exports = {
                 'syphon-lt-bl': '#3B72A8',
                 'syphon-dk-bl': '#001025',
                 'anchor-ylw': '#EBB501',
+                'logo-bl': '#252A5C',
             },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
