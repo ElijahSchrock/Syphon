@@ -2,7 +2,7 @@
 
 ## About Syphon
 
-Syphon is a social media site made specifically for develeopers and anyone else who has an interest in the InfoSEC world.
+Syphon is a social media site made specifically for develeopers and anyone who has an interest in the InfoSEC world.
 
 
 ## Built With

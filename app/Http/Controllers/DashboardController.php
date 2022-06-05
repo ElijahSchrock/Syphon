@@ -2,23 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Dashboard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CategoriesController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $categories = Categories::query()
-            // ->select('Name')
+
+        $posts = Post::query()
+            ->where('user_id',Auth::user()->id)
             ->get();
-        
-        return view('livewire.Categories.categories-index', ['categories' => $categories]);
+
+        return view('livewire.Dashboard.dashboard-index', ['posts' => $posts]);
     }
 
     /**
@@ -45,25 +50,21 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $category)
+    public function show(Dashboard $dashboard)
     {
-        $posts = \App\Models\Post::query()
-        ->where('category_id',$category->id)
-        ->get();
-
-        return view('livewire.Categories.categories-show', ['category' => $category, 'posts' => $posts]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit(Dashboard $dashboard)
     {
         //
     }
@@ -72,10 +73,10 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, Dashboard $dashboard)
     {
         //
     }
@@ -83,10 +84,10 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy(Dashboard $dashboard)
     {
         //
     }

@@ -18,8 +18,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
-    Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
+    // Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
 
     Route::resource('home', App\Http\Controllers\HomeController::class);
     Route::resource('categories', \App\Http\Controllers\CategoriesController::class);
+    Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
 });
