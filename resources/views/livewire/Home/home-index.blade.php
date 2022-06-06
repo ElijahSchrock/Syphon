@@ -54,7 +54,7 @@
             </div>
         @endforeach
     </div>
-
+    <x-post-button/>
 </x-app-layout>
 
 

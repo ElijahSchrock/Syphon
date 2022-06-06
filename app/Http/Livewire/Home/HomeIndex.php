@@ -30,5 +30,6 @@ class HomeIndex extends Component
             'posts' => $this->posts,
             'users' => User::get()
         ]);
+
     }
 }

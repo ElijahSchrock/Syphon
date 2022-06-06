@@ -52,6 +52,7 @@
             </div>
         @endforeach
     </div>
+    <x-post-button/>
 </x-app-layout>
 
 {{-- <a href="{{ route('parts.create') }}">New Post</a> --}}

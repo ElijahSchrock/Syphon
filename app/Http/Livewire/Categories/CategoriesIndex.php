@@ -10,4 +10,5 @@ class CategoriesIndex extends Component
     {
         return view('livewire.categories.categories-index');
     }
+
 }

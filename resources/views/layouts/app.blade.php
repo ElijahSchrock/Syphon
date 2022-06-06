@@ -18,7 +18,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-gradient-to-b from-syphon-bl to-syphon-lt-bl">
+    <body class="relative font-sans antialiased bg-gradient-to-b from-syphon-bl to-syphon-lt-bl">
         <x-jet-banner />
 
         <div class="min-h-screen">

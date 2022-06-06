@@ -39,6 +39,7 @@
             </div>
         </div>
     </div>
-
+    {{-- <a href=" {{ route('home.edit', ['category' => $category]) }}"> --}}
+        <x-post-button/>
 </x-app-layout>
 

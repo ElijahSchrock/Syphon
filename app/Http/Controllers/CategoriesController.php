@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -12,12 +13,12 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Home $home)
     {
         $categories = Categories::query()
             ->get();
         
-        return view('livewire.Categories.categories-index', ['categories' => $categories]);
+        return view('livewire.Categories.categories-index', ['categories' => $categories, 'home' => $home]);
     }
 
     /**

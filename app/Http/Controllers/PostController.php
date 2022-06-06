@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Home;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +29,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.Posts.new-post');
     }
 
     /**
@@ -47,10 +46,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show(Post $post)
     {
         //
     }
@@ -58,22 +57,22 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit(Post $post)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -81,10 +80,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Home  $home
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
+    public function destroy(Post $post)
     {
         //
     }
