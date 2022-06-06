@@ -11,7 +11,7 @@ class Categories extends Model
 
     public function posts()
     {
-        return $this->belongsToMany(\App\Models\Post::class, 'post_id');
+        return $this->hasMany(\App\Models\Post::class, 'post_id');
     }
 
 }

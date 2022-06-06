@@ -20,7 +20,9 @@
                                 <div>
                                     <h4 class="text-lg font-bold text-slate-400"> {{ $post->user->name }}</h4>
                                     <h4 class="text-2xl font-bold">{{ $post->title }}</h4>
-                                    <p class="mt-1 text-sm text-slate-400">{{ $post->category }}</p>
+                                    @foreach ($categories as $category)
+                                        <p class="mt-1 text-sm text-slate-400">{{ $category }}</p>    
+                                    @endforeach
                                     <p class="mt-1 text-sm text-red-600">{{ $post->featured_image }}</p>
                                     <p class="mt-1">{{ $post->body }}</p>
 

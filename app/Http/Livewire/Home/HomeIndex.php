@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Categories;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Component;
@@ -28,7 +29,8 @@ class HomeIndex extends Component
     {
         return view('livewire.home.home-index', [ 
             'posts' => $this->posts,
-            'users' => User::get()
+            'users' => User::get(),
+            'categories' => Categories::get(),
         ]);
 
     }

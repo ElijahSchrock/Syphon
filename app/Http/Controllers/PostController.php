@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -12,6 +15,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public $posts;
+    public $categories;
+
     public function index()
     {
         $posts = Post::query()
@@ -19,7 +26,9 @@ class PostController extends Controller
             ->with('user:id,name,profile_photo_path')
             ->get();
 
-        return view('livewire.home.home-index', ['posts' => $posts]);
+        $categories = Categories::get();
+
+        return view('livewire.home.home-index', ['posts' => $posts, 'categories' => $categories]);
     }
 
     /**
@@ -29,8 +38,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('livewire.Posts.new-post');
+        return view('livewire.Posts.post-create', [
+            'posts' => $this->posts,
+            'categories' => Categories::get()
+        ]);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +53,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $categories = Categories::get();
+
+        $post = new Post;
+        $post->user_id = Auth::user()->id;
+        $post->category_id = $request->get('category');
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->featured_image = $request->featured_image;
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
     /**
