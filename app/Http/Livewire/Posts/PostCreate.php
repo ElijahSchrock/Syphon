@@ -41,7 +41,7 @@ class PostCreate extends Component
 
     public function save()
     {
-        $this->validate();
+        // $this->validate(); //validation havin an error
         ray('Hello Save');
 
         $post = new Post;

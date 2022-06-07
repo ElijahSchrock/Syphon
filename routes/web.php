@@ -31,5 +31,5 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::get('dashboard', DashboardIndex::class)->name('dashboard.index');
     //Categories
     Route::get('categories', CategoriesIndex::class)->name('categories.index');
-    Route::get('categories/show', CategoriesShow::class)->name('categories.show');
+    Route::get('categories/{category}', CategoriesShow::class)->name('categories.show');
 });
