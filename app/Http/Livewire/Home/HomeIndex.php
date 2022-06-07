@@ -20,7 +20,7 @@ class HomeIndex extends Component
 
     public function render()
     {
-        ray()->showQueries();
+        // ray()->showQueries();
         return view('livewire.home.home-index', [
             'posts' => $this->posts,
             'users' => User::get(),
