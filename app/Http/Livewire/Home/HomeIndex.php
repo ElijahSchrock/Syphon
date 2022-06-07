@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home;
 
 use App\Models\Categories;
 use App\Models\Post;
@@ -10,28 +10,21 @@ use Livewire\Component;
 class HomeIndex extends Component
 {
 
-    public $id;
-    public $category;
-    public $title;
-    public $excerpt;
-    public $body;
-    public $published;
-    public $featured_image;
-
-    public $editing;
-
     public function getPostsProperty()
     {
-        return Post::get();
+        return Post::query()
+            ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image')
+            ->with('user:id,name,profile_photo_path')
+            ->get();
     }
 
     public function render()
     {
-        return view('livewire.home.home-index', [ 
+        ray()->showQueries();
+        return view('livewire.home.home-index', [
             'posts' => $this->posts,
             'users' => User::get(),
             'categories' => Categories::get(),
         ]);
-
     }
 }

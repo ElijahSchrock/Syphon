@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Livewire\Home\HomeIndex;
+use App\Http\Livewire\Posts\PostCreate;
+use App\Http\Livewire\Categories\CategoriesIndex;
+use App\Http\Livewire\Categories\CategoriesShow;
+use App\Http\Livewire\Dashboard\DashboardIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +23,13 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
-    // Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
-
-    Route::resource('posts', App\Http\Controllers\PostController::class);
-    Route::resource('categories', \App\Http\Controllers\CategoriesController::class);
-    Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
+    // Home 
+    Route::get('posts', HomeIndex::class)->name('posts.index');
+    // Posts Create
+    Route::get('posts/create', PostCreate::class)->name('posts.create');
+    //Dashboard
+    Route::get('dashboard', DashboardIndex::class)->name('dashboard.index');
+    //Categories
+    Route::get('categories', CategoriesIndex::class)->name('categories.index');
+    Route::get('categories/show', CategoriesShow::class)->name('categories.show');
 });

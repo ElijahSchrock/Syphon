@@ -21,14 +21,10 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::query()
-            ->select('id', 'user_id', 'category', 'title', 'body', 'featured_image')
-            ->with('user:id,name,profile_photo_path')
-            ->get();
 
-        $categories = Categories::get();
 
-        return view('livewire.home.home-index', ['posts' => $posts, 'categories' => $categories]);
+        // return view('livewire.home.home-index', ['posts' => $posts]);
+        // return view('home');
     }
 
     /**
@@ -38,10 +34,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('livewire.Posts.post-create', [
-            'posts' => $this->posts,
-            'categories' => Categories::get()
-        ]);
+        //
     }
     
 
@@ -54,8 +47,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $categories = Categories::get();
-
         $post = new Post;
         $post->user_id = Auth::user()->id;
         $post->category_id = $request->get('category');
@@ -63,10 +54,12 @@ class PostController extends Controller
         $post->body = $request->input('body');
         $post->featured_image = $request->featured_image;
         $post->save();
+        
 
         return redirect()->route('posts.index');
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -86,7 +79,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        
+        //
     }
 
     /**

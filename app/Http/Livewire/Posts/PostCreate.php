@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
 use App\Models\Categories;
@@ -22,8 +22,8 @@ class PostCreate extends Component
     
     protected $rules = [
         'post.title' => 'required|string',
-        'post.body' => 'required|string|min:500',
-        'post.category' => '',
+        'post.body' => 'required|string|max:500',
+        'post.category' => 'required',
     ];
 
     public function getPostsProperty()
@@ -41,20 +41,24 @@ class PostCreate extends Component
 
     public function save()
     {
-        $this->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+        $this->validate();
+        ray('Hello Save');
 
         $post = new Post;
-        $post->title = $this->title;
-        $post->body = $this->body;
-        $post->category = $this->category->name;
-        $post->category_id = $this->categories->id;
-        $post->featured_image = $this->featured_image;
+        $post->user_id = auth()->user()->id;
+        $post->title = $this->post['title'];
+        $post->body = $this->post['body'];
+        $post->category_id = $this->post['category'];
+        // $post->featured_image = $this->featured_image;
         $post->save();
 
-        $this->reset(['title', 'body', 'categories', 'featured_image']);
+        return to_route('posts.index');
+    }
+
+    public function onCancel()
+    {
+        ray('Hello OnCancel');
+        return url()->previous();
     }
 
 }

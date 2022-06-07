@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\User;
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -18,12 +15,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-
-        $posts = Post::query()
-            ->where('user_id',Auth::user()->id)
-            ->get();
-
-        return view('livewire.Dashboard.dashboard-index', ['posts' => $posts]);
+        //
     }
 
     /**
