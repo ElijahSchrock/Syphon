@@ -17,11 +17,15 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'category' => $this->faker->text(100),
-            'title' => $this->faker->sentence(15),
-            'excerpt' => $this->faker->sentence(3, true),
-            'body' => $this->faker->paragraphs(4, true),
-            'featured_image' => "post.png",
+            'likes' => $this->faker->numberBetween(0,1000),
+            'dislikes' => $this->faker->numberBetween(0,1000)
         ];
+        // return [
+        //     'category' => $this->faker->text(100),
+        //     'title' => $this->faker->sentence(15),
+        //     'excerpt' => $this->faker->sentence(3, true),
+        //     'body' => $this->faker->paragraphs(4, true),
+        //     'featured_image' => "post.png",
+        // ];
     }
 }

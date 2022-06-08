@@ -10,7 +10,7 @@ class DashboardIndex extends Component
     public function getPostsProperty()
     {
         return Post::query()
-            ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image')
+            ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image', 'likes', 'dislikes')
             ->with('categories:id,name')
             ->with('user:id,name,profile_photo_path')
             ->get();
@@ -21,6 +21,7 @@ class DashboardIndex extends Component
     {
         $posts = Post::query()
             ->where('user_id',auth()->user()->id)
+            ->orderBy('likes','desc')
             ->get();
 
         return view('livewire.Dashboard.dashboard-index', ['posts' => $posts]);
