@@ -36,6 +36,7 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                <x-post-button/>
             </main>
         </div>
 
