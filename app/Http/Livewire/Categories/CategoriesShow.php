@@ -17,6 +17,7 @@ class CategoriesShow extends Component
 
         $posts = \App\Models\Post::query()
         ->where('category_id',$category->id)
+        ->orderBy('likes','desc')
         ->get();
 
         $this->posts = $posts;

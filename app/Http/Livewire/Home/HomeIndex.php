@@ -10,13 +10,26 @@ use Livewire\Component;
 class HomeIndex extends Component
 {
 
-    public function getPostsProperty()
+    public $posts;
+
+    public function mount(Post $posts)
     {
-        return Post::query()
-            ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image')
-            ->with('user:id,name,profile_photo_path')
-            ->get();
+
+        $posts = \App\Models\Post::query()
+        ->orderBy('likes','desc')
+        ->get();
+
+        $this->posts = $posts;
     }
+
+    // public function getPostsProperty()
+    // {
+    //     return Post::query()
+    //         ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image', 'likes', 'dislikes')
+    //         ->with('user:id,name,profile_photo_path')
+    //         ->orderBy('likes','desc')
+    //         ->get();
+    // }
 
     public function render()
     {
@@ -26,5 +39,13 @@ class HomeIndex extends Component
             'users' => User::get(),
             'categories' => Categories::get(),
         ]);
+    }
+
+    public function save()
+    {
+        ray('clicked like');
+        $this->posts->likes = 1;
+        $this->posts->save();
+
     }
 }

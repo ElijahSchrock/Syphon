@@ -22,6 +22,12 @@
                             <p class="mt-1 text-sm text-slate-400">{{ $post->categories->name ?? "-" }}</p>
                             <p class="mt-1 text-sm text-red-600">{{ $post->featured_image }}</p>
                             <p class="mt-1">{{ $post->body }}</p>
+                            <div class="w-auto pt-2">
+                                <x-fas-thumbs-down class="h-6 w-6 mr-2 flex float-right" />
+                                <p class="mr-2 flex float-right">{{ $post->dislikes }}</p>
+                                <x-fas-thumbs-up class="h-6 w-6 mr-2 flex float-right" />
+                                <p class="mr-2 flex float-right">{{ $post->likes }}</p>
+                            </div>
                             <div class="mt-6 flex">
                                 <div class="mr-4 flex-shrink-0">
                                     <svg class="h-12 w-12 border border-gray-300 bg-white text-gray-300" preserveAspectRatio="none" stroke="currentColor" fill="none" viewBox="0 0 200 200" aria-hidden="true">
