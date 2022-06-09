@@ -21,17 +21,12 @@ use App\Http\Livewire\Categories\CategoriesIndex;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
     // Home 
     Route::get('/', HomeIndex::class)->name('posts.index');
     // Posts Create
-    Route::get('posts/create', PostCreate::class)->name('posts.create');
+    Route::get('posts/create', PostCreate::class)->name('posts.create')->middleware('can:post.create');
     //Dashboard
-    Route::get('dashboard', DashboardIndex::class)->name('dashboard.index');
+    Route::get('dashboard', DashboardIndex::class)->name('dashboard.index'); //->middleware('can:post.create');
     //Categories
     Route::get('categories', CategoriesIndex::class)->name('categories.index');
     Route::get('categories/{category}', CategoriesShow::class)->name('categories.show');
@@ -41,4 +36,3 @@ use App\Http\Livewire\Categories\CategoriesIndex;
         Route::get('users', UsersList::class)->name('users');
         Route::get('users/{user}', UserView::class)->name('user');
     });
-// });

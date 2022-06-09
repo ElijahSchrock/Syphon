@@ -36,7 +36,9 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-                <x-post-button/>
+                @hasrole('User')
+                    <x-post-button/>
+                @endhasrole
             </main>
         </div>
 
