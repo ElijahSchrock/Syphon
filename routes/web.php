@@ -37,7 +37,7 @@ use App\Http\Livewire\Categories\CategoriesIndex;
     Route::get('categories/{category}', CategoriesShow::class)->name('categories.show');
 
     //Admin Panel
-    Route::group(['as' => 'admin.'], function () {
+    Route::group(['as' => 'admin.', 'middleware' => ['can:user.administration']], function () {
         Route::get('users', UsersList::class)->name('users');
         Route::get('users/{user}', UserView::class)->name('user');
     });
