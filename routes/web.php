@@ -25,7 +25,7 @@ use App\Http\Livewire\Categories\CategoriesIndex;
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+// Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
     // Home 
     Route::get('/', HomeIndex::class)->name('posts.index');
     // Posts Create
@@ -41,4 +41,4 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
         Route::get('users', UsersList::class)->name('users');
         Route::get('users/{user}', UserView::class)->name('user');
     });
-});
+// });

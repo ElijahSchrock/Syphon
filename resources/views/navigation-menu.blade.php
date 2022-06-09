@@ -21,9 +21,11 @@
                     <x-jet-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')">
-                        {{ __('Admin Panel') }}
-                    </x-jet-nav-link>
+                    {{-- @can() --}}
+                        <x-jet-nav-link href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')">
+                            {{ __('Admin Panel') }}
+                        </x-jet-nav-link>
+                    {{-- @endcan --}}
                 </div>
             </div>
 
