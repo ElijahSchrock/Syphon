@@ -19,20 +19,20 @@
                                         <label for="title" class="block text-sm font-medium text-white"> Title </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <input type="text" name="title" id="title" class="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-md rounded-r-md sm:text-sm border-gray-300 bg-gray-800" wire:model="post.title" />
-                                            @error('name')
-                                            <div class="text-red-600 text-sm">{{ $message }}</div>
-                                            @enderror
                                         </div>
+                                        @error('post.title')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="sm:col-span-6">
                                         <label for="body" class="block text-sm font-medium text-white"> Content </label>
                                         <div class="mt-1">
                                             <textarea id="body" name="body" rows="15" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md text-white bg-gray-800" wire:model="post.body"></textarea>
-                                            @error('body')
-                                            <div class="text-red-600 text-sm">{{ $message }}</div>
-                                            @enderror
                                         </div>
+                                        @error('post.body')
+                                            <div class="text-red-600 text-sm">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="sm:col-span-6">
@@ -40,11 +40,15 @@
                                         <div class="mt-1 flex items-center">
                                             {{-- category logic --}}
                                             <x-select wire:model="post.category" name="category">
+                                                <option value=""></option>
                                                 @foreach ($categories as $category )
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </x-select>
                                         </div>
+                                        @error('post.category')
+                                            <div class="text-red-600 text-sm">{{ $message }}</div>
+                                        @enderror  
                                     </div>
 
                                     <div class="sm:col-span-6">

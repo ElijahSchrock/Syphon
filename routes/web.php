@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Livewire\Home\HomeIndex;
-use App\Http\Livewire\Posts\PostCreate;
-use App\Http\Livewire\Categories\CategoriesIndex;
-use App\Http\Livewire\Categories\CategoriesShow;
-use App\Http\Livewire\Dashboard\DashboardIndex;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\UsersList;
+use App\Http\Livewire\Admin\UserView;
+use App\Http\Livewire\Posts\PostCreate;
+use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Livewire\Dashboard\DashboardIndex;
+use App\Http\Livewire\Categories\CategoriesShow;
+use App\Http\Livewire\Categories\CategoriesIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
     // Home 
-    Route::get('posts', HomeIndex::class)->name('posts.index');
+    Route::get('/', HomeIndex::class)->name('posts.index');
     // Posts Create
     Route::get('posts/create', PostCreate::class)->name('posts.create');
     //Dashboard
@@ -32,4 +35,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     //Categories
     Route::get('categories', CategoriesIndex::class)->name('categories.index');
     Route::get('categories/{category}', CategoriesShow::class)->name('categories.show');
+
+    //Admin Panel
+    Route::group(['as' => 'admin.'], function () {
+        Route::get('users', UsersList::class)->name('users');
+        Route::get('users/{user}', UserView::class)->name('user');
+    });
 });

@@ -26,6 +26,12 @@ class PostCreate extends Component
         'post.category' => 'required',
     ];
 
+    protected $validationAttributes = [
+        'post.title' => 'title',
+        'post.body' => 'body',
+        'post.category' => 'category'
+    ];
+
     public function getPostsProperty()
     {
         return Post::get();
@@ -41,7 +47,7 @@ class PostCreate extends Component
 
     public function save()
     {
-        // $this->validate(); //validation havin an error
+        $this->validate(); //validation havin an error
         ray('Hello Save');
 
         $post = new Post;

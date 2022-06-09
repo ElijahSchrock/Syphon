@@ -3,7 +3,6 @@
         {{ $category->name }}
     </h2>
 </x-slot>
-
 <div>
     @foreach ($posts as $post)
     <div class="py-12">
