@@ -19,11 +19,13 @@
                                                 <h3 class="text-xl font-semibold text-gray-500  uppercase truncate">Browse Categories</h3>
                                             </div>
                                         </div>
+                                        @can('create.category')
                                         <div class="flex-shrink-0">
                                             <a class="link" href="{{ route("categories.new") }}">
                                                 <button type="button" class="group inline-flex items-center py-2 px-3 border border-transparent rounded-full bg-indigo-600 hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-xs">New Category?</button>
                                             </a>
                                         </div>
+                                        @endcan
                                     </li>
                                 </ul>
                             </div>
