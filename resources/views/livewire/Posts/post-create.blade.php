@@ -39,11 +39,12 @@
                                         <label for="category" class="block text-sm font-medium text-white"> Category </label>
                                         <div class="mt-1 flex items-center">
                                             {{-- category logic --}}
-                                            <x-select wire:model="post.category" name="category">
+                                            <x-select wire:model="post.category" name="category" class="mr-3">
                                                 <option value=""></option>
                                                 @foreach ($categories as $category )
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
+                                                {{-- <option value="custom" id="custom">New Cateogry?</option> --}}
                                             </x-select>
                                         </div>
                                         @error('post.category')

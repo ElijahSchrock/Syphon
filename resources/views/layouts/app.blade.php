@@ -16,7 +16,7 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}"></script>
     </head>
     <body class="relative font-sans antialiased bg-gradient-to-b from-syphon-bl to-syphon-lt-bl">
         <x-jet-banner />

@@ -84,10 +84,9 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+                    @hasrole('User')
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            {{-- @can('post.create') --}}
-                            @hasrole('User')
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url ?? "" }}" alt="{{ Auth::user()->name ?? ""}}" />
@@ -103,25 +102,6 @@
                                 </button>
                             </span>
                             @endif
-
-                            @else
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                            </div>
-                            @endhasrole
-                            {{-- @endcan --}}
-                            {{-- @if (Route::has('login')) --}}
-
-                            {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
-                            {{-- @else --}}
-
-
-                            {{-- @if (Route::has('register'))
-                                {{-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a> --}}
-                            {{-- @endif
-                                @endauth  --}}
-                            {{-- @endif --}}
                         </x-slot>
 
                         <x-slot name="content">
@@ -152,6 +132,12 @@
                             </form>
                         </x-slot>
                     </x-jet-dropdown>
+                    @else
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                    </div>
+                    @endhasrole
                 </div>
             </div>
 

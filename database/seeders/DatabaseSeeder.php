@@ -32,10 +32,10 @@ class DatabaseSeeder extends Seeder
 
         // create permissions
         $permissions = [
-            'post.create',
-            'post.edit',
-            'post.delete',
-            'post.update'
+            'categories.create',
+            'categories.edit',
+            'categories.delete',
+            'categories.update'
         ];
 
         foreach ($permissions as $permission)   {
@@ -45,19 +45,20 @@ class DatabaseSeeder extends Seeder
         }
 
         // gets all permissions via Gate::before rule; see AuthServiceProvider
-        Role::create(['name' => 'Super Admin']);
+        // Role::create(['name' => 'Super Admin']);
 
-        $user = Role::create(['name' => 'User']);
+        // $role = Role::findById(2);
+        // $role->givePermissionTo([$permission1, $permission2, $permission3]);
 
         $userPermissions = [
-            'post.create',
-            'post.edit',
-            'post.delete',
-            'post.update'
+            'categories.create',
+            'categories.edit',
+            'categories.delete',
+            'categories.update'
         ];
 
         foreach ($userPermissions as $permission)   {
-            $user->givePermissionTo($permission);
+            $role->givePermissionTo($permission);
         }
     }
 }

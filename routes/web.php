@@ -9,6 +9,8 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 use App\Http\Livewire\Dashboard\DashboardIndex;
 use App\Http\Livewire\Categories\CategoriesShow;
 use App\Http\Livewire\Categories\CategoriesIndex;
+use App\Http\Livewire\Categories\NewCategory;
+use App\Models\Categories;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,7 @@ use App\Http\Livewire\Categories\CategoriesIndex;
     //Categories
     Route::get('categories', CategoriesIndex::class)->name('categories.index');
     Route::get('categories/{category}', CategoriesShow::class)->name('categories.show');
+    Route::get('new', NewCategory::class)->name('categories.new')->middleware('can:post.create');
 
     //Admin Panel
     Route::group(['as' => 'admin.', 'middleware' => ['can:user.administration']], function () {
