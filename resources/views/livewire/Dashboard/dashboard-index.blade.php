@@ -3,7 +3,7 @@
         {{ __('Dashboard') }}
     </h2>
 </x-slot>
-
+@if($hasPosts)
 <div>
     @foreach ($posts as $usersPost)
     <div class="py-12">
@@ -12,7 +12,7 @@
                 <div class="p-6 bg-syphon-dk-bl text-white">
                     <div class="flex">
                         <div class="mr-4 flex-shrink-0">
-                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                            <button wire:click.prevent='toProfile' class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition" {{ route('profile.show') }}>
                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                         </div>
@@ -57,21 +57,6 @@
     </div>
     @endforeach
 </div>
-
-
-    {{-- <a href="{{ route('parts.create') }}">New Post</a> --}}
-    {{-- <table class="w-full">
-    <thead>
-        <th class="px-2 text-left">Category</th>
-        <th class="px-2 text-left">Title</th>
-        <th class="px-2 text-left">Body</th>
-        <th class="px-2 text-left">Featured Image</th>
-    </thead>
-
-    <tr class="my-2">
-        <td class="py-2">{{ $usersPost->category }}</td>
-    <td class="py-2">{{ $usersPost->title }}</td>
-    <td class="py-2">{{ $usersPost->body }}</td>
-    <td class="py-2">{{ $usersPost->featured_image }}</td>
-    </tr>
-    </table> --}}
+@else
+    <livewire:dashboard.new-user-index />
+@endif

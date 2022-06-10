@@ -4,14 +4,24 @@ namespace App\Http\Livewire\Categories;
 
 use Livewire\Component;
 use App\Models\Categories;
+use Livewire\WithPagination;
 
 class CategoriesIndex extends Component
 {
+    use WithPagination;
+
+    public function getCategoriesProperty()
+    {
+        return Categories::paginate(5);
+    }
+
     public function render()
     {
-        $categories = Categories::query()
-            ->get();
+        return view('livewire.categories.categories-index', ['categories' => $this->categories]);
+    }
 
-        return view('livewire.categories.categories-index', ['categories' => $categories]);
+    public function newCategory()
+    {
+        return view('livewire.categories.new-category');
     }
 }

@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class DashboardIndex extends Component
 {
+    public $hasPosts = false;
+
     public function getPostsProperty()
     {
         return Post::query()
@@ -24,6 +26,19 @@ class DashboardIndex extends Component
             ->orderBy('likes','desc')
             ->get();
 
+        if(sizeof($posts) > 0)
+        {
+            ray('true');
+            $this->hasPosts = true;
+        } else {
+            ray('false');
+        }
+
         return view('livewire.Dashboard.dashboard-index', ['posts' => $posts]);
+    }
+
+    public function toProfile()
+    {
+        return redirect()->route('profile.show');
     }
 }

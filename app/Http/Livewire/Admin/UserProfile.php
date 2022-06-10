@@ -12,7 +12,7 @@ class UserProfile extends Component
     protected function rules()
     {
         return [
-            'editing.name' => 'required|nullable',
+            'editing.name' => 'required|string',
             'editing.email' => 'required'
         ];
     }

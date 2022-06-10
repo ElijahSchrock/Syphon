@@ -3,13 +3,20 @@
 namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
-use App\Models\Categories;
 use Livewire\Component;
+use App\Models\Categories;
+use Illuminate\Validation\Rule;
 
 class PostCreate extends Component
 {
 
     public $post;
+
+    public $new_category = false;
+
+    public $categoryId;
+
+    // public Categories $categories;
 
     protected $fillable = [
         'title', 
@@ -20,11 +27,17 @@ class PostCreate extends Component
         'featured_image'
     ];
     
-    protected $rules = [
-        'post.title' => 'required|string',
-        'post.body' => 'required|string|max:500',
-        'post.category' => 'required',
-    ];
+    protected function rules ()
+    {
+        return [
+            'post.title' => 'required|string',
+            'post.body' => 'required|string|max:500',
+            // 'post.category' => [
+            //     'required',
+            //     Rule::when(!$this->new_category, 'exists:Categories,id')
+            // ]
+        ];
+    }
 
     protected $validationAttributes = [
         'post.title' => 'title',
@@ -40,7 +53,6 @@ class PostCreate extends Component
     public function render()
     {
         return view('livewire.Posts.post-create', [
-            'posts' => $this->posts,
             'categories' => Categories::get()
         ]);
     }
@@ -66,5 +78,4 @@ class PostCreate extends Component
         ray('Hello OnCancel');
         return url()->previous();
     }
-
 }
