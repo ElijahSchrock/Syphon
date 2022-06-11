@@ -15,8 +15,6 @@
                                 <img class="h-12 w-12 rounded-full object-cover" src="{{ $post->user->profile_photo_url }}" alt="{{ $post->user->name }}" />
                             </button>
                         </div>
-                        {{-- <livewire:comment-section :comments='$comments' /> --}}
-
                         <div>
                             <h4 class="text-lg font-bold text-slate-400"> {{ $post->user->name }}</h4>
                             <h4 class="text-2xl font-bold">{{ $post->title }}</h4>
@@ -29,6 +27,7 @@
                                 <x-fas-thumbs-up wire:click='onLike' class="h-6 w-6 mr-2 flex float-right" />
                                 <p class="mr-2 flex float-right">{{ $post->likes }}</p>
                             </div>
+                            <livewire:comment-section :post='$post'/>
                         </div>
                     </div>
                 </div>

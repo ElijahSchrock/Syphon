@@ -8,20 +8,18 @@ use App\Models\Comment;
 
 class CommentSection extends Component
 {
-    public Comment $comments;
+    public Post $post;
 
-    public function mount($comments)
+    public function mount($post)
     {
-        $comments = Comment::query();
-
-        $this->comments = $comments;
+        $this->post = $post;
     }
 
 
     public function render()
     {
         return view('livewire.comment-section',[
-            'comments', $this->comments
+            'post', $this->post
         ]);
     }
 }
