@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        // \Spatie\Permission\Models\Permission::create(['name' => 'user.administration', 'new' => 1, 'guard_name' => 'web']);
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->longText('body');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // 
+        Schema::dropIfExists('comments');
     }
 };

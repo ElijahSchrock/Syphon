@@ -19,11 +19,6 @@
                                 @endforeach
                             </select>
                         @endif
-                            {{-- <p>{{$user->name}} Has </p>
-                            @foreach ($user->roles as $role )
-                               <p> {{$role->name}} </p>
-                            @endforeach
-                            <p> Role</p> --}}
                     </div>
                 </div>
             </div>

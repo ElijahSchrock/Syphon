@@ -2,25 +2,28 @@
 
 namespace App\Http\Livewire\Home;
 
-use App\Models\Categories;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Comment;
+use App\Models\Categories;
+use Livewire\WithPagination;
 
 class HomeIndex extends Component
 {
+    use WithPagination;
 
-    public $posts;
+    // public $posts;
 
-    public function mount(Post $posts)
-    {
+    // public function mount(Post $posts)
+    // {
 
-        $posts = \App\Models\Post::query()
-        ->orderBy('likes','desc')
-        ->get();
+    //     $posts = \App\Models\Post::query()
+    //     ->orderBy('likes','desc')
+    //     ->get();
 
-        $this->posts = $posts;
-    }
+    //     $this->posts = $posts;
+    // }
 
     // public function getPostsProperty()
     // {
@@ -35,7 +38,7 @@ class HomeIndex extends Component
     {
         // ray()->showQueries();
         return view('livewire.home.home-index', [
-            'posts' => $this->posts,
+            'posts' => Post::paginate(3),
             'users' => User::get(),
             'categories' => Categories::get(),
         ]);
@@ -47,5 +50,10 @@ class HomeIndex extends Component
         $this->posts->likes = 1;
         $this->posts->save();
 
+    }
+
+    public function paginationView()
+    {
+        return 'pagination';
     }
 }

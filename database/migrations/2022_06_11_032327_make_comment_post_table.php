@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        // \Spatie\Permission\Models\Permission::create(['name' => 'user.administration', 'new' => 1, 'guard_name' => 'web']);
+        Schema::create('comment_post', function (Blueprint $table) {
+            $table->integer('comment_id')->unsigned();
+            $table->integer('post_id')->unsigned();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // 
+        //
     }
 };

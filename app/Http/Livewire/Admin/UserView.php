@@ -9,6 +9,8 @@ class UserView extends Component
 {
     public User $user;
     
+    protected $listeners = ['$refresh'];
+
     public function render()
     {
         return view('livewire.admin.user-view');
