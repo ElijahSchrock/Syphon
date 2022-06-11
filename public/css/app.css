@@ -1537,6 +1537,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
 }
+.bg-syphon-lt-bl {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 114 168 / var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
