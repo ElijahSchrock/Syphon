@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Http\Livewire\Admin\UserView;
 
 class Roles extends Component
 {
@@ -35,6 +36,8 @@ class Roles extends Component
         $this->user->assignRole($this->assigningRole);
 
         $this->reset(['assigningRole', 'showingAssignModal']);
+        $this->emitTo(UserView::getName(), '$refresh');
+
     }
 
     public function onCancel()

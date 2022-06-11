@@ -15,7 +15,8 @@
                         </div>
                         <div class="mt-2">
                             <livewire:admin.user-profile :editing="$user" />
-                            <livewire:admin.roles :user="$user">
+                            <livewire:admin.current-roles :user="$user" />
+                            <livewire:admin.roles :user="$user" >
                         </div>
                     </div>
                 </div>

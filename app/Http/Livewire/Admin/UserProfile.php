@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Http\Livewire\Admin\UserView;
 
 class UserProfile extends Component
 {
@@ -31,10 +32,16 @@ class UserProfile extends Component
 
 
         $this->emit('saved');
+        $this->emitTo(UserView::getName(), '$refresh');
     }
     
     public function render()
     {
         return view('livewire.admin.user-profile');
+    }
+
+    public function onCancel()
+    {
+        return redirect()->to('users');
     }
 }
