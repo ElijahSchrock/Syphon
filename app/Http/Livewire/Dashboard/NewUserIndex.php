@@ -9,7 +9,7 @@ class NewUserIndex extends Component
 {
     public function render()
     {
-        return view('livewire.Dashboard.new-user-index');
+        return view('livewire.dashboard.new-user-index');
     }
 
     public function toProfile()

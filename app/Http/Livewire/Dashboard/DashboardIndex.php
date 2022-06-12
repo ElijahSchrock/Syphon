@@ -34,7 +34,7 @@ class DashboardIndex extends Component
             ray('false');
         }
 
-        return view('livewire.Dashboard.dashboard-index', ['posts' => $posts]);
+        return view('livewire.dashboard.dashboard-index', ['posts' => $posts]);
     }
 
     public function toProfile()
