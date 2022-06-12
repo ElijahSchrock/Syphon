@@ -18,7 +18,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}"></script>
     </head>
-    <body class="relative font-sans antialiased bg-gradient-to-b from-syphon-bl to-syphon-lt-bl">
+    <body class="relative font-sans antialiased bg-gradient-to-b from-syphon-lt-bl to-syphon-bl">
         <x-jet-banner />
 
         <div class="min-h-screen">
@@ -26,7 +26,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-logo-bl">
+                <header class="bg-syphon-lt-bl">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

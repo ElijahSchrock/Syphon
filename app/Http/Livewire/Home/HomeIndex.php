@@ -25,20 +25,20 @@ class HomeIndex extends Component
     //     $this->posts = $posts;
     // }
 
-    // public function getPostsProperty()
-    // {
-    //     return Post::query()
-    //         ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image', 'likes', 'dislikes')
-    //         ->with('user:id,name,profile_photo_path')
-    //         ->orderBy('likes','desc')
-    //         ->get();
-    // }
+    public function getPostsProperty()
+    {
+        return Post::query()
+            ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image', 'likes', 'dislikes')
+            ->with('user:id,name,profile_photo_path')
+            ->orderBy('created_at','desc')
+            ->paginate(3);
+    }
 
     public function render()
     {
         // ray()->showQueries();
         return view('livewire.home.home-index', [
-            'posts' => Post::paginate(3),
+            'posts' => $this->posts,
             'users' => User::get(),
             'categories' => Categories::get(),
         ]);
