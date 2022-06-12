@@ -76,6 +76,6 @@ class PostCreate extends Component
     public function onCancel()
     {
         ray('Hello OnCancel');
-        return url()->previous();
+        return to_route('posts.index');
     }
 }
