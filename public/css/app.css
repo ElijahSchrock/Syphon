@@ -1537,6 +1537,14 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
 }
+.bg-syphon-lt-bl {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 114 168 / var(--tw-bg-opacity));
+}
+.bg-syphon-bl {
+  --tw-bg-opacity: 1;
+  background-color: rgb(35 38 88 / var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -1860,6 +1868,18 @@ select {
 .text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+.text-anchor-ylw {
+  --tw-text-opacity: 1;
+  color: rgb(235 181 1 / var(--tw-text-opacity));
+}
+.text-syphon-lt-bl {
+  --tw-text-opacity: 1;
+  color: rgb(59 114 168 / var(--tw-text-opacity));
+}
+.text-syphon-bl {
+  --tw-text-opacity: 1;
+  color: rgb(35 38 88 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;

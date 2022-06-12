@@ -5,16 +5,20 @@ namespace App\Http\Livewire\Posts;
 use App\Models\Post;
 use Livewire\Component;
 use App\Models\Categories;
+use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
 
 class PostCreate extends Component
 {
+    use WithFileUploads;
 
     public $post;
 
     public $new_category = false;
 
     public $categoryId;
+
+    public $fileUpload = false;
 
     // public Categories $categories;
 
@@ -67,7 +71,7 @@ class PostCreate extends Component
         $post->title = $this->post['title'];
         $post->body = $this->post['body'];
         $post->category_id = $this->post['category'];
-        // $post->featured_image = $this->featured_image;
+        // $post->featured_image = $this->post['featured_photo'];
         $post->save();
 
         return to_route('posts.index');
@@ -77,5 +81,10 @@ class PostCreate extends Component
     {
         ray('Hello OnCancel');
         return to_route('posts.index');
+    }
+
+    public function tryFile()
+    {
+        $this->fileUpload = true;
     }
 }
