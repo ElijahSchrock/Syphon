@@ -24,7 +24,7 @@
                             <div class="w-auto pt-2">
                                 <x-fas-thumbs-down class="h-6 w-6 mr-2 flex float-right" />
                                 <p class="mr-2 flex float-right">{{ $post->dislikes }}</p>
-                                <x-fas-thumbs-up wire:click='onLike' class="h-6 w-6 mr-2 flex float-right" />
+                                <x-fas-thumbs-up class="h-6 w-6 mr-2 flex float-right" />
                                 <p class="mr-2 flex float-right">{{ $post->likes }}</p>
                             </div>
                             <livewire:comment-section :post='$post'/>
