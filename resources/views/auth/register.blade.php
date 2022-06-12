@@ -1,9 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
+            <a href="{{ route('posts.index') }}">
             <h2 class="font-semibold text-xl text-white leading-tight">
                 <img class="w-1/2 m-auto" src="{{ asset('syphon_banner_white.png') }}" />
             </h2>
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
