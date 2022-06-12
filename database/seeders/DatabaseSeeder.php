@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\Comment::factory(50)->create();
+        // \App\Models\Comment::factory(50)->create();
 
        
 
@@ -31,37 +31,46 @@ class DatabaseSeeder extends Seeder
         ##Permissions Seeder##
 
         // Reset cached roles and permissions
-        // app()[PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // // create permissions
-        // $permissions = [
-        //     'categories.create',
-        //     'categories.edit',
-        //     'categories.delete',
-        //     'categories.update'
-        // ];
+        // create permissions
+        $permissions = [
+            'post.create',
+            'post.edit',
+            'post.delete',
+            'post.update',
+            'categories.create',
+            'categories.edit',
+            'categories.delete',
+            'categories.update'
+        ];
 
-        // foreach ($permissions as $permission)   {
-        //     Permission::create([
-        //         'name' => $permission
-        //     ]);
-        // }
+        foreach ($permissions as $permission)   {
+            Permission::create([
+                'name' => $permission
+            ]);
+        }
 
         // // gets all permissions via Gate::before rule; see AuthServiceProvider
-        // // Role::create(['name' => 'Super Admin']);
+        Role::create(['name' => 'Super Admin']);
 
         // // $role = Role::findById(2);
         // // $role->givePermissionTo([$permission1, $permission2, $permission3]);
+        $user = Role::create(['name' => 'User']);
 
-        // $userPermissions = [
-        //     'categories.create',
-        //     'categories.edit',
-        //     'categories.delete',
-        //     'categories.update'
-        // ];
+        $userPermissions = [
+            'post.create',
+            'post.edit',
+            'post.delete',
+            'post.update',
+            'categories.create',
+            'categories.edit',
+            'categories.delete',
+            'categories.update'
+        ];
 
-        // foreach ($userPermissions as $permission)   {
-        //     $role->givePermissionTo($permission);
-        // }
+        foreach ($userPermissions as $permission)   {
+            $user->givePermissionTo($permission);
+        }
     }
 }
