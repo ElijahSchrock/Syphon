@@ -31,7 +31,7 @@ class PostCreate extends Component
     {
         return [
             'post.title' => 'required|string',
-            'post.body' => 'required|string|max:500',
+            'post.body' => 'required|string',
             // 'post.category' => [
             //     'required',
             //     Rule::when(!$this->new_category, 'exists:Categories,id')
