@@ -31,7 +31,7 @@ class HomeIndex extends Component
             ->select('id', 'user_id', 'category_id', 'title', 'body', 'featured_image', 'likes', 'dislikes')
             ->with('user:id,name,profile_photo_path')
             ->orderBy('created_at','desc')
-            ->paginate(3);
+            ->paginate(5);
     }
 
     public function render()
