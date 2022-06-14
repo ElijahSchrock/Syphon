@@ -42,4 +42,9 @@ class NewCategory extends Component
     {
         return view('livewire.categories.new-category');
     }
+
+    public function onCancel()
+    {
+        return to_route('categories.index');
+    }
 }

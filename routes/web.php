@@ -32,7 +32,7 @@ use App\Models\Categories;
     //Categories
     Route::get('categories', CategoriesIndex::class)->name('categories.index');
     Route::get('categories/{category}', CategoriesShow::class)->name('categories.show');
-    Route::get('new', NewCategory::class)->name('categories.new')->middleware('can:create.category');
+    Route::get('new', NewCategory::class)->name('categories.new')->middleware('can:categories.create');
 
     //Admin Panel
     Route::group(['as' => 'admin.', 'middleware' => ['can:user.administration']], function () {
